@@ -113,6 +113,12 @@ class ContextCardViewController: UIViewController {
             case "google_fused_location":
                 addLocationCard()
                 break
+//            case SENSOR_NEW: //adding new sensor context card
+//                addNewCard()
+//                break
+//            case SENSOR_GARMIN: //adding garmin sensor context card
+//                addGarminCard()
+//                break
             default:
                 break
             }
@@ -135,12 +141,12 @@ class ContextCardViewController: UIViewController {
                                  SENSOR_ACCELEROMETER,
                                  SENSOR_GYROSCOPE, SENSOR_SCREEN,
                                  SENSOR_PLUGIN_PEDOMETER,
-                                 SENSOR_HEALTH_KIT,
+                                 SENSOR_HEALTH_KIT,//update health kit context card to have better chart
                                  SENSOR_PLUGIN_DEVICE_USAGE,
                                  SENSOR_SIGNIFICANT_MOTION,
                                  SENSOR_IOS_ESM,
                                  SENSOR_GOOGLE_FUSED_LOCATION,
-                                 "locations"]
+                                 "locations"]//Going to add garmin context card to display some of the collected data
     
     let key = "com.yuukinishiyama.app.aware-client-ios-v2.context-cards"
     
@@ -451,6 +457,40 @@ class ContextCardViewController: UIViewController {
             
         }
     }
+    
+    func addHRVCard(){
+        if let sensor = AWARESensorManager.shared().getSensor(SENSOR_NEW) as? AWAREHealthKit{
+            // HKQuantityTypeIdentifierHeartRate
+            let quantity = sensor.awareHKHeartRate
+            let contextCard = ScatterChartCard(frame: CGRect(x:0, y:0,
+                                                             width: self.view.frame.width,
+                                                             height:300))
+            contextCard.xAxisLabels = ["0","6","12","18","24"];
+            contextCard.setTodaysChart(sensor: quantity, xKey:"timestamp_start", yKeys: ["value"])
+            contextCard.titleLabel.text = NSLocalizedString("Heart Rate Variability", comment: "")
+            
+            self.contextCards.append(contextCard)
+            self.mainStackView.addArrangedSubview(contextCard)
+            
+        }
+    }
+    
+//    func addHRVCard(){
+//        if let sensor = AWARESensorManager.shared().getSensor(SENSOR_GARMIN) as? AWAREHealthKit{
+//            // HKQuantityTypeIdentifierHeartRate
+//            let quantity = sensor.awareHKHeartRate
+//            let contextCard = ScatterChartCard(frame: CGRect(x:0, y:0,
+//                                                             width: self.view.frame.width,
+//                                                             height:300))
+//            contextCard.xAxisLabels = ["0","6","12","18","24"];
+//            contextCard.setTodaysChart(sensor: quantity, xKey:"timestamp_start", yKeys: ["value"])
+//            contextCard.titleLabel.text = NSLocalizedString("Heart Rate Variability", comment: "")
+//
+//            self.contextCards.append(contextCard)
+//            self.mainStackView.addArrangedSubview(contextCard)
+//
+//        }
+//    }
     
     func addLocationCard(){
         

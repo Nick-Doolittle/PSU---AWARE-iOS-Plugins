@@ -46,6 +46,8 @@
 "Google Calendar ESM" = "Google Calendar ESM";
 "Significant Motion" = "Significant Motion";
 "Push Notification" = "Push Notification";
+"Heart Rate Variability"= "Heart Rate Variability";//added
+"Garmin"= "Garmin";//added
 
 /// sensors details
 "accelerometer_detail" = "Acceleration, including the force of gravity";
@@ -81,6 +83,7 @@
 "google_calendar_esm_detail" = "Scheduling an ESM based on a Google Calendar";
 "significant_motion_detail" = "Significant motion events based on Accelerometer";
 "push_notification_detail" = "";
+"garmin_detail" = "Garmin Vivosmart4 data collected via Garmin Health API";//added
 
 // onboarding
 "onbording_overview_title" = "About AWARE";
@@ -120,11 +123,11 @@
 
 /// context card
 "context_card_no_active_sensors_title" = "No active sensors";
-"context_card_no_active_sensors_msg"   = "Please activate one or more sensors from Setting View";
-"context_card_add_title"               = "Which context-card do you add?";
-"context_card_add_msg"                 = "Please select a context-card from the following items.";
-"context_card_remove_title"            = "Which context-card do you remove?";
-"context_card_remove_msg"              = "Please select a context-card from the following items.";
+"context_card_no_active_sensors_msg"   = "Please activate one or more sensors from the Settings View";
+"context_card_add_title"               = "Which context card do you want to add?";
+"context_card_add_msg"                 = "Please select a context card from the following items.";
+"context_card_remove_title"            = "Which context card do you want to remove?";
+"context_card_remove_msg"              = "Please select a context card from the following items.";
 "context_card_item_remove_all"         = "Remove all";
 
 /// terminate

@@ -104,6 +104,8 @@ extern NSString* const SENSOR_ORIENTATION;
 extern NSString* const SENSOR_HEALTH_KIT;
 extern NSString* const SENSOR_SIGNIFICANT_MOTION;
 extern NSString* const SENSOR_IOS_ESM;
+extern NSString* const SENSOR_NEW;
+extern NSString* const SENSOR_GARMIN;
 
 extern NSString* const STATUS_SENSOR_ACCELEROMETER;//accelerometer
 extern NSString* const STATUS_SENSOR_BAROMETER;//barometer
@@ -130,6 +132,8 @@ extern NSString* const STATUS_SENSOR_LABELS;
 extern NSString* const STATUS_SENSOR_ORIENTATION;
 extern NSString* const STATUS_SENSOR_HEALTH_KIT;
 extern NSString* const STATUS_SENSOR_IOS_ESM;
+extern NSString* const STATUS_SENSOR_NEW; // new sensor edit
+extern NSString* const STATUS_SENSOR_GARMIN;//garmin sensor itself
 
 extern NSString* const SENSOR_PLUGIN_GOOGLE_ACTIVITY_RECOGNITION;
 extern NSString* const SENSOR_IOS_ACTIVITY_RECOGNITION;
@@ -156,6 +160,7 @@ extern NSString* const SENSOR_PLUGIN_STUDENTLIFE_AUDIO;
 extern NSString* const SENSOR_PLUGIN_CALENDAR_ESM_SCHEDULER;
 extern NSString* const SENSOR_PUSH_NOTIFICATION;
 extern NSString* const SENSOR_PLUGIN_HEADPHONE_MOTION;
+extern NSString* const SENSOR_PLUGIN_GARMIN;//garmin plugin settings option
 
 extern NSString* const STATUS_SENSOR_PLUGIN_GOOGLE_ACTIVITY_RECOGNITION;
 extern NSString* const STATUS_SENSOR_IOS_ACTIVITY_RECOGNITION;
@@ -180,6 +185,7 @@ extern NSString* const STATUS_SENSOR_BASIC_SETTINGS;
 extern NSString* const STATUS_SENSOR_PLUGIN_CALENDAR;
 extern NSString* const STATUS_SENSOR_PLUGIN_STUDENTLIFE_AUDIO;
 extern NSString* const STATUS_SENSOR_PLUGIN_HEADPHONE_MOTION;
+extern NSString* const STATUS_SENSOR_PLUGIN_GARMIN;//status of the garmin plugin settings option
 
 extern NSString* const SENSOR_PLUGIN_MSBAND_SENSORS_CALORIES;
 extern NSString* const SENSOR_PLUGIN_MSBAND_SENSORS_DEVICECONTACT;
@@ -328,6 +334,7 @@ extern NSString * const ACTION_AWARE_CONTACT_REQUEST;
 extern NSString * const ACTION_AWARE_SETTING_UI_UPDATE_REQUEST;
 
 extern NSString * const ACTION_AWARE_FITBIT_LOGIN_REQUEST;
+extern NSString * const ACTION_AWARE_GARMIN_LOGIN_REQUEST; // added garmin login request action
 
 extern NSString * const ACTION_AWARE_UPDATE_STUDY_CONFIG;
 

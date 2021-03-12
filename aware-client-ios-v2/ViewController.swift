@@ -164,8 +164,8 @@ class ViewController: UIViewController {
             manager.startAllSensors()
             let alert = UIAlertController(title: NSLocalizedString("setting_view_config_refresh_title", comment: ""),
                                           message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
-                
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Okay", comment: ""), style: .cancel, handler: { (action) in
+                //changed alert to say okay instead of cancel
             }))
             self.present(alert, animated:true , completion: nil)
         } else {
@@ -223,6 +223,16 @@ class ViewController: UIViewController {
                                 details: NSLocalizedString("accelerometer_detail", comment:""),
                                 identifier: SENSOR_ACCELEROMETER,
                                 icon: UIImage(named: "ic_action_accelerometer", in: bundle, compatibleWith: nil)),
+                TableRowContent(type: .sensor,
+                                title: NSLocalizedString("Heart Rate Variability", comment: ""),
+                                details: NSLocalizedString("", comment:""),
+                                identifier: SENSOR_NEW,
+                                icon: UIImage(named: "ic_action_heartrate", in: bundle, compatibleWith: nil)),
+                TableRowContent(type: .sensor,
+                                title: NSLocalizedString("Garmin", comment: ""),
+                                details: NSLocalizedString("garmin_detail", comment:""),
+                                identifier: SENSOR_PLUGIN_GARMIN,
+                                icon: UIImage(named: "ic_action_garmin", in: bundle, compatibleWith: nil)),
                 TableRowContent(type: .sensor,
                                 title: NSLocalizedString("Gyroscope", comment:""),
                                 details: NSLocalizedString("gyro_detail", comment: ""),

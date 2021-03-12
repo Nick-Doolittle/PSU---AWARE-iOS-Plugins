@@ -97,6 +97,8 @@ NSString* const SENSOR_SIGNIFICANT_MOTION = @"significant_motion";
 NSString* const SENSOR_IOS_ESM         = @"plugin_ios_esm";
 NSString* const SENSOR_IOS_ACTIVITY_RECOGNITION = @"plugin_ios_activity_recognition";
 NSString* const SENSOR_PUSH_NOTIFICATION = @"push_notification";
+NSString* const SENSOR_NEW = @"new_sensor";//new sensor edit
+NSString* const SENSOR_GARMIN = @"garmin_sensor";//garmin sensor
 
 NSString* const STATUS_SENSOR_ACCELEROMETER = @"status_accelerometer";//accelerometer
 NSString* const STATUS_SENSOR_BAROMETER = @"status_barometer";//barometer
@@ -123,6 +125,8 @@ NSString* const STATUS_SENSOR_LABELS               = @"status_labels";
 NSString* const STATUS_SENSOR_ORIENTATION          = @"status_orientation";
 NSString* const STATUS_SENSOR_HEALTH_KIT           = @"status_health_kit";
 NSString* const STATUS_SENSOR_IOS_ESM              = @"status_plugin_ios_esm";
+NSString* const STATUS_SENSOR_NEW             = @"status_new_sensor";
+NSString* const STATUS_SENSOR_GARMIN             = @"status_garmin_sensor";//status of the garmin sensor
 
 ////////////////////////////
 
@@ -150,6 +154,7 @@ NSString* const SENSOR_PLUGIN_HEADPHONE_MOTION       = @"plugin_headphone_motion
 
 NSString* const SENSOR_PLUGIN_BLE_HR          = @"plugin_ble_heartrate";
 NSString* const SENSOR_PLUGIN_FITBIT          = @"plugin_fitbit";
+NSString* const SENSOR_PLUGIN_GARMIN          = @"plugin_garmin";//garmin plugin settings option
 
 NSString* const SENSOR_PLUGIN_CALENDAR_ESM_SCHEDULER = @"plugin_calendar_esm_scheduler";
 
@@ -195,6 +200,7 @@ NSString* const STATUS_SENSOR_BASIC_SETTINGS         = @"status_plugin_basic_set
 NSString* const STATUS_SENSOR_PLUGIN_CALENDAR        = @"status_plugin_calendar";
 NSString* const STATUS_SENSOR_PLUGIN_STUDENTLIFE_AUDIO = @"status_plugin_studentlife_audio";
 NSString* const STATUS_SENSOR_PLUGIN_HEADPHONE_MOTION = @"status_plugin_headphone_motion";
+NSString* const STATUS_SENSOR_PLUGIN_GARMIN          = @"status_plugin_garmin";//status of garmin plugin settings option
 
 
 //_PLUGIN_MSBAND_SENSORS_ACC = @"plugin_msband_sensors_accelerometer";
@@ -342,6 +348,7 @@ NSString * const ACTION_AWARE_CONTACT_REQUEST = @"ACTION_AWARE_CONTACT_REQUEST";
 NSString * const ACTION_AWARE_SETTING_UI_UPDATE_REQUEST = @"ACTION_AWARE_SETTING_UI_UPDATE_REQUEST";
 
 NSString * const ACTION_AWARE_FITBIT_LOGIN_REQUEST = @"ACTION_AWARE_FITBIT_LOGIN_REQUEST";
+NSString * const ACTION_AWARE_GARMIN_LOGIN_REQUEST = @"ACTION_AWARE_FITBIT_LOGIN_REQUEST"; // added Garmin login action request
 
 NSString * const ACTION_AWARE_UPDATE_STUDY_CONFIG = @"ACTION_AWARE_UPDATE_STUDY_CONFIG";
 

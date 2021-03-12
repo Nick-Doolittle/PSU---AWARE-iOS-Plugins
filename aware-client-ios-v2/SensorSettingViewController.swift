@@ -164,6 +164,11 @@ class SensorSettingViewController: UIViewController {
                                                key: AWARE_PREFERENCES_STATUS_CALLS,
                                                defaultValue: "false"))
                 break
+            case SENSOR_PLUGIN_GARMIN:
+                settings.append(SettingContent(type: .bool ,
+                                               key: AWARE_PREFERENCES_STATUS_GARMIN,
+                                               defaultValue: "false"))
+                break
             case SENSOR_BLUETOOTH:
                 settings.append(SettingContent(type: .bool,
                                                key: AWARE_PREFERENCES_STATUS_BLUETOOTH,

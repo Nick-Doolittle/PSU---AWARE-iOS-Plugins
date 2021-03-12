@@ -198,6 +198,8 @@ static AWARESensorManager * sharedSensorManager;
                 awareSensor = [[PushNotification alloc] initWithAwareStudy:awareStudy dbType:dbType];
             }else if ([setting isEqualToString:AWARE_PREFERENCES_STATUS_IOS_LOCATION_VISIT]){
                 awareSensor = [[LocationVisit alloc] initWithAwareStudy:awareStudy dbType:dbType];
+            }else if([setting isEqualToString:[NSString stringWithFormat:@"status_%@", SENSOR_PLUGIN_GARMIN]]){
+                awareSensor = [[Garmin alloc] initWithAwareStudy:awareStudy dbType:dbType];//added Garmin
             }
             #ifdef IMPORT_MIC
             else if([setting isEqualToString:[NSString stringWithFormat:@"status_%@",SENSOR_AMBIENT_NOISE]]){
