@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let fitbit = manager.getSensor(SENSOR_PLUGIN_FITBIT) as? Fitbit {
                 fitbit.viewController = window?.rootViewController
             }
+            if let garmin = manager.getSensor(SENSOR_PLUGIN_GARMIN) as? Garmin {
+                garmin.viewController = window?.rootViewController
+            }
             core.activate()
             manager.add(AWAREEventLogger.shared())
             manager.add(AWAREStatusMonitor.shared())
@@ -107,6 +110,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let fitbit = manager.getSensor(SENSOR_PLUGIN_FITBIT) as? Fitbit {
                 fitbit.handle(url, sourceApplication: nil, annotation: options)
             }
+        } else if url.scheme == "garmin" {
+            let manager = AWARESensorManager.shared()
+            if let garmin = manager.getSensor(SENSOR_PLUGIN_GARMIN) as? Garmin {
+                garmin.handle(url, sourceApplication: nil, annotation: options)
+            }
         } else if url.scheme == "aware-ssl" || url.scheme == "aware" {
             var studyURL = url.absoluteString
             if studyURL.prefix(9) == "aware-ssl" {
@@ -132,6 +140,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             manager.addSensors(with: study)
                             if let fitbit = manager.getSensor(SENSOR_PLUGIN_FITBIT) as? Fitbit {
                                 fitbit.viewController = self.window?.rootViewController
+                            }
+                            if let garmin = manager.getSensor(SENSOR_PLUGIN_GARMIN) as? Garmin {
+                                garmin.viewController = self.window?.rootViewController
                             }
                             manager.add(AWAREEventLogger.shared())
                             manager.add(AWAREStatusMonitor.shared())

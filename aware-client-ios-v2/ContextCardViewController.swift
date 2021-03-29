@@ -97,6 +97,7 @@ class ContextCardViewController: UIViewController {
                 break
             case SENSOR_HEALTH_KIT:
                 addHealthKitCard()
+//                addHRVCard()
                 break
             case SENSOR_PLUGIN_DEVICE_USAGE:
                 addDeviceUsageCard()
@@ -439,16 +440,27 @@ class ContextCardViewController: UIViewController {
     func addHealthKitCard(){
         if let sensor = AWARESensorManager.shared().getSensor(SENSOR_HEALTH_KIT) as? AWAREHealthKit{
             // HKQuantityTypeIdentifierHeartRate
-            let quantity = sensor.awareHKHeartRate
-            let contextCard = ScatterChartCard(frame: CGRect(x:0, y:0,
+            let hrquantity = sensor.awareHKHeartRate
+            let heartrateCard = ScatterChartCard(frame: CGRect(x:0, y:0,
                                                              width: self.view.frame.width,
                                                              height:300))
-            contextCard.xAxisLabels = ["0","6","12","18","24"];
-            contextCard.setTodaysChart(sensor: quantity, xKey:"timestamp_start", yKeys: ["value"])
-            contextCard.titleLabel.text = NSLocalizedString("Heart Rate", comment: "")
+            heartrateCard.xAxisLabels = ["0","6","12","18","24"];
+            heartrateCard.setTodaysChart(sensor: hrquantity, xKey:"timestamp_start", yKeys: ["value"])
+            heartrateCard.titleLabel.text = NSLocalizedString("Heart Rate", comment: "")
             
-            self.contextCards.append(contextCard)
-            self.mainStackView.addArrangedSubview(contextCard)
+            self.contextCards.append(heartrateCard)
+            self.mainStackView.addArrangedSubview(heartrateCard)
+            
+            let hrvquantity = sensor.awareHKHeartRateVariability
+            let hrvCard = ScatterChartCard(frame: CGRect(x:0, y:0,
+                                                             width: self.view.frame.width,
+                                                             height:300))
+            hrvCard.xAxisLabels = ["0","6","12","18","24"];
+            hrvCard.setWeeklyChart(sensor: hrvquantity, yKeys: ["value"])//(sensor: hrvquantity, xKey:"timestamp_start", yKeys: ["value"])
+            hrvCard.titleLabel.text = NSLocalizedString("Heart Rate Variability", comment: "")
+            
+            self.contextCards.append(hrvCard)
+            self.mainStackView.addArrangedSubview(hrvCard)
             
 //          HKQuantityTypeIdentifierActiveEnergyBurned
 //          HKQuantityTypeIdentifierStepCount
@@ -458,27 +470,10 @@ class ContextCardViewController: UIViewController {
         }
     }
     
-    func addHRVCard(){
-        if let sensor = AWARESensorManager.shared().getSensor(SENSOR_NEW) as? AWAREHealthKit{
-            // HKQuantityTypeIdentifierHeartRate
-            let quantity = sensor.awareHKHeartRate
-            let contextCard = ScatterChartCard(frame: CGRect(x:0, y:0,
-                                                             width: self.view.frame.width,
-                                                             height:300))
-            contextCard.xAxisLabels = ["0","6","12","18","24"];
-            contextCard.setTodaysChart(sensor: quantity, xKey:"timestamp_start", yKeys: ["value"])
-            contextCard.titleLabel.text = NSLocalizedString("Heart Rate Variability", comment: "")
-            
-            self.contextCards.append(contextCard)
-            self.mainStackView.addArrangedSubview(contextCard)
-            
-        }
-    }
-    
 //    func addHRVCard(){
-//        if let sensor = AWARESensorManager.shared().getSensor(SENSOR_GARMIN) as? AWAREHealthKit{
+//        if let sensor = AWARESensorManager.shared().getSensor(SENSOR_HEALTH_KIT) as? AWAREHealthKit{
 //            // HKQuantityTypeIdentifierHeartRate
-//            let quantity = sensor.awareHKHeartRate
+//            let quantity = sensor.awareHKHeartRateVariability
 //            let contextCard = ScatterChartCard(frame: CGRect(x:0, y:0,
 //                                                             width: self.view.frame.width,
 //                                                             height:300))

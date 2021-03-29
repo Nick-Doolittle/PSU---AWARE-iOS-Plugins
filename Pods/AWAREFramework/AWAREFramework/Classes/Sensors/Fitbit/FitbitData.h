@@ -57,3 +57,4 @@ typedef void (^FitbitSleepRequestCallback)    (NSData * _Nullable result,  NSStr
 NS_ASSUME_NONNULL_END
 
 @end
+// add get heart rate variability

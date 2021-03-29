@@ -46,6 +46,10 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
                                                                     dbType:dbType
                                                                 sensorName:[NSString stringWithFormat:@"%@_sleep", SENSOR_HEALTH_KIT]
                                                                 entityName:@"EntityHealthKitCategorySleep"];
+        _awareHKHeartRateVariability = [[AWAREHealthKitQuantity alloc] initWithAwareStudy:study
+                                                                       dbType:dbType
+                                                                   sensorName:[NSString stringWithFormat:@"%@_heartratevariability", SENSOR_HEALTH_KIT]
+                                                                   entityName:@"EntityHealthKitQuantityHRV"];//might have to change to HRV and add new entities
         _fetchIntervalSecond = 60 * 30;
         _preperiodDays = 0;
         screen = [[Screen alloc] initWithAwareStudy:study dbType:dbType];
@@ -67,7 +71,7 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
                                                    [self readAllDate];
                                                } else {
                                                    // Determine if it was an error or if the
-                                                   // user just canceld the authorization request
+                                                   // user just canceled the authorization request
                                                }
                                            }];
     }
@@ -81,6 +85,7 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
     [_awareHKQuantity  createTable];
     [_awareHKHeartRate createTable];
     [_awareHKSleep     createTable];
+    [_awareHKHeartRateVariability createTable];
 }
 
 - (void)setParameters:(NSArray *)parameters{
@@ -142,6 +147,9 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
     if(_awareHKSleep.storage != nil) {
         [_awareHKSleep.storage saveBufferDataInMainThread:YES];
     }
+    if (_awareHKHeartRateVariability.storage != nil){
+        [_awareHKHeartRateVariability.storage saveBufferDataInMainThread:YES];
+    }
       
     [self setSensingState:NO];
     return YES;
@@ -154,6 +162,7 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
     [_awareHKHeartRate.storage setSyncProcessCallback:self.storage.syncProcessCallback];
     [_awareHKHeartRate startSyncDB];
     [_awareHKSleep     startSyncDB];
+    [_awareHKHeartRateVariability    startSyncDB]; // adding heart rate variability
     [super startSyncDB];
 }
 
@@ -164,6 +173,7 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
     
     [_awareHKHeartRate stopSyncDB];
     [_awareHKSleep     stopSyncDB];
+    [_awareHKHeartRateVariability    stopSyncDB];   // adding heart rate variability
     [super stopSyncDB];
 }
 
@@ -276,7 +286,11 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
                         
                         if ([objectId isEqualToString:HKQuantityTypeIdentifierHeartRate]){
                             [self->_awareHKHeartRate saveQuantityData:results];
-                        }else{
+                        }
+                        else if ([objectId isEqualToString:HKQuantityTypeIdentifierHeartRateVariabilitySDNN]){
+                            [self->_awareHKHeartRateVariability saveQuantityData:results];
+                        }
+                        else{
                             [self->_awareHKQuantity saveQuantityData:results];
                         }
                     
@@ -516,6 +530,9 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
         quantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierRestingHeartRate];
         [dataTypesSet addObject:quantityType];
         quantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierWalkingHeartRateAverage];
+        [dataTypesSet addObject:quantityType];
+        // adding VO2 max
+        quantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierVO2Max];
         [dataTypesSet addObject:quantityType];
     }
     

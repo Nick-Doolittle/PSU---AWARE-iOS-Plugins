@@ -221,6 +221,8 @@
 #import "EntityHealthKitQuantity+CoreDataProperties.h"
 #import "EntityHealthKitQuantityHR+CoreDataClass.h"
 #import "EntityHealthKitQuantityHR+CoreDataProperties.h"
+#import "EntityHealthKitQuantityHRV+CoreDataClass.h"
+#import "EntityHealthKitQuantityHRV+CoreDataProperties.h"
 #import "EntityHealthKitWorkout+CoreDataClass.h"
 #import "EntityHealthKitWorkout+CoreDataProperties.h"
 #import "AmbientNoise.h"

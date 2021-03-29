@@ -7,12 +7,14 @@ target 'aware-client-ios-v2' do
 
   # Pods for aware-client-ios-v2
   pod 'AWAREFramework', '~> 1.12.2'
+#  pod 'AWAREFramework/Core', '~> 1.12.2'
   pod 'AWAREFramework/Microphone' , '~> 1.12.2'
   pod 'AWAREFramework/MotionActivity', '~> 1.12.2'
   pod 'AWAREFramework/Bluetooth', '~> 1.12.2'
   pod 'AWAREFramework/Calendar', '~> 1.12.2'
   pod 'AWAREFramework/Contact', '~> 1.12.2'
   pod 'AWAREFramework/HealthKit', '~> 1.12.2'
+
 
 #  pod 'AWAREFramework'               , :path => '../AWAREFramework-iOS'
 #  pod 'AWAREFramework/Microphone'    , :path => '../AWAREFramework-iOS'
@@ -25,6 +27,8 @@ target 'aware-client-ios-v2' do
   pod 'Charts'
   pod 'Onboard'
   pod 'DynamicColor'
+  pod 'BDBOAuth1Manager', '~> 2.0'
+
   
   target 'aware-client-ios-v2Tests' do
     inherit! :search_paths

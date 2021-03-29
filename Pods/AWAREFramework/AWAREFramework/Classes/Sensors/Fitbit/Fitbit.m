@@ -389,7 +389,7 @@ NSInteger const AWARE_ALERT_FITBIT_MOVE_TO_LOGIN_PAGE = 2;
     }
     
 }
-
+// got an error:    "invalid_grant", "message":"Refresh token invalid: ...
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -641,32 +641,32 @@ didReceiveResponse:(NSURLResponse *)response
                     if (self.isDebug) NSLog(@"failed to parse JSON: %@", error.debugDescription);
                     [self sendDebugAlertWithTitle:@"[Fitbit] Refresh Token: JSON Parsing Error"
                                           message:responseString
-                                          buttons:@[@"close"]];
+                                          buttons:@[@"Close"]];
                     return;
                 }
                 
                 if(values == nil){
                     [self sendDebugAlertWithTitle:@"[Fitbit] Refresh Token: The value is empty"
                                           message:responseString
-                                          buttons:@[@"close"]];
+                                          buttons:@[@"Close"]];
                     return;
                 }
                 
                 // if([self isDebug]){
                 if([values objectForKey:@"access_token"] == nil){
                     if([AWAREUtils isForeground]){
-                        [self sendDebugAlertWithTitle:@"[Fitbit] Refresh Token ERROR: access_tokne is empty"
+                        [self sendDebugAlertWithTitle:@"[Fitbit] Refresh Token ERROR: access_token is empty"
                                               message:responseString
-                                              buttons:@[@"close"]];
+                                              buttons:@[@"Close"]];
                     }else{
-                        [self sendBroadcastNotification:@"[Fitbit] Refresh Token: access_tokne is empty" ];
+                        [self sendBroadcastNotification:@"[Fitbit] Refresh Token: access_token is empty" ];
                     }
                     return;
                 }else{
                     if([AWAREUtils isForeground]){
                         [self sendDebugAlertWithTitle:@"[Fitbit] Refresh Token: Success"
                                               message:@"Fitbit Plugin updates its access token using a refresh token."
-                                              buttons:@[@"close"]];
+                                              buttons:@[@"Close"]];
                     }else{
                         [self sendBroadcastNotification:@"[Fitbit] Refresh Token: Success to update tokens"];
                     }
@@ -696,7 +696,7 @@ didReceiveResponse:(NSURLResponse *)response
             }else{
                 [self sendDebugAlertWithTitle:@"[Fitbit] Refresh Token: Fitbit Login Error"
                                       message:@"No access token and user_id"
-                                      buttons:@[@"close"]];
+                                      buttons:@[@"Close"]];
             }
         });
         
@@ -704,7 +704,7 @@ didReceiveResponse:(NSURLResponse *)response
         if (self.isDebug) NSLog(@"%@",exception.debugDescription);
         [self sendDebugAlertWithTitle:@"[Fitbit] Refresh Token: Unknown Error occured"
                               message:exception.debugDescription
-                              buttons:@[@"close"]];
+                              buttons:@[@"Close"]];
     } @finally {
         
     }
@@ -733,14 +733,14 @@ didReceiveResponse:(NSURLResponse *)response
                 if (self.isDebug) NSLog(@"failed to parse JSON: %@", error.debugDescription);
                 [self sendDebugAlertWithTitle:@"[Fitbit Login] Error: JSON parsing error"
                                       message:[NSString stringWithFormat:@"failed to parse JSON: %@",error.debugDescription]
-                                      buttons:@[@"close"]];
+                                      buttons:@[@"Close"]];
                 return;
             }
             
             if(values == nil){
                 [self sendDebugAlertWithTitle:@"[Fitbit Login] Error: value is empty"
                                       message:@"The value is null..."
-                                      buttons:@[@"close"]];
+                                      buttons:@[@"Close"]];
                 return;
             }
             
@@ -748,13 +748,13 @@ didReceiveResponse:(NSURLResponse *)response
             if(![values objectForKey:@"access_token"]){
                 [self sendDebugAlertWithTitle:@"[Fitbit Login] Error: access_token is empty"
                                       message:responseString
-                                      buttons:@[@"close"]];
+                                      buttons:@[@"Close"]];
                 if (self.isDebug) NSLog(@"Fitbit Login Error: %@", responseString);
                 return;
             }else{
                 [self sendDebugAlertWithTitle:@"[Fitbit Login] Success"
                                       message:@"Fitbit Plugin obtained an access token, refresh token, and user_id from Fitbit API."
-                                      buttons:@[@"close"]];
+                                      buttons:@[@"Close"]];
             }
             
             NSString * accessToken = [values objectForKey:@"access_token"];
@@ -785,7 +785,7 @@ didReceiveResponse:(NSURLResponse *)response
         }else{
             [self sendDebugAlertWithTitle:@"[Fitbit Login] Error: Unknown error occured"
                                   message:@"The response from Fitbit server is Null."
-                                  buttons:@[@"close"]];
+                                  buttons:@[@"Close"]];
             if (self.isDebug) NSLog(@"Fitbit Login Error: %@", @"The response from Fitbit server is Null");
         }
         
@@ -925,7 +925,7 @@ didReceiveResponse:(NSURLResponse *)response
 }
 
 - (void) sendDebugAlertWithTitle:(NSString *) title message:(NSString *)message buttons:(NSArray<NSString *> *)buttons{
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:message
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:title//changed from "message"
                                                                     message:message
                                                              preferredStyle:UIAlertControllerStyleAlert];
     if (buttons!=nil) {

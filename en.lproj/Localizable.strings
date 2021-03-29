@@ -84,6 +84,7 @@
 "significant_motion_detail" = "Significant motion events based on Accelerometer";
 "push_notification_detail" = "";
 "garmin_detail" = "Garmin Vivosmart4 data collected via Garmin Health API";//added
+"hrv_detail" = "Collect and view heart rate variablility data from an external smartwatch";//added
 
 // onboarding
 "onbording_overview_title" = "About AWARE";

@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) AWAREHealthKitCategory * awareHKCategory;
 @property (readonly) AWAREHealthKitQuantity * awareHKQuantity;
 @property (readonly) AWAREHealthKitQuantity * awareHKHeartRate;
+@property (readonly) AWAREHealthKitQuantity * awareHKHeartRateVariability; //adding heart rate variability
 @property (readonly) AWAREHealthKitCategory * awareHKSleep;
 
 - (void) requestAuthorizationToAccessHealthKit;

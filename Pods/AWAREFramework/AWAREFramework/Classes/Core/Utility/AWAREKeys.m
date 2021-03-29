@@ -97,7 +97,6 @@ NSString* const SENSOR_SIGNIFICANT_MOTION = @"significant_motion";
 NSString* const SENSOR_IOS_ESM         = @"plugin_ios_esm";
 NSString* const SENSOR_IOS_ACTIVITY_RECOGNITION = @"plugin_ios_activity_recognition";
 NSString* const SENSOR_PUSH_NOTIFICATION = @"push_notification";
-NSString* const SENSOR_NEW = @"new_sensor";//new sensor edit
 NSString* const SENSOR_GARMIN = @"garmin_sensor";//garmin sensor
 
 NSString* const STATUS_SENSOR_ACCELEROMETER = @"status_accelerometer";//accelerometer
@@ -125,7 +124,6 @@ NSString* const STATUS_SENSOR_LABELS               = @"status_labels";
 NSString* const STATUS_SENSOR_ORIENTATION          = @"status_orientation";
 NSString* const STATUS_SENSOR_HEALTH_KIT           = @"status_health_kit";
 NSString* const STATUS_SENSOR_IOS_ESM              = @"status_plugin_ios_esm";
-NSString* const STATUS_SENSOR_NEW             = @"status_new_sensor";
 NSString* const STATUS_SENSOR_GARMIN             = @"status_garmin_sensor";//status of the garmin sensor
 
 ////////////////////////////
@@ -348,7 +346,7 @@ NSString * const ACTION_AWARE_CONTACT_REQUEST = @"ACTION_AWARE_CONTACT_REQUEST";
 NSString * const ACTION_AWARE_SETTING_UI_UPDATE_REQUEST = @"ACTION_AWARE_SETTING_UI_UPDATE_REQUEST";
 
 NSString * const ACTION_AWARE_FITBIT_LOGIN_REQUEST = @"ACTION_AWARE_FITBIT_LOGIN_REQUEST";
-NSString * const ACTION_AWARE_GARMIN_LOGIN_REQUEST = @"ACTION_AWARE_FITBIT_LOGIN_REQUEST"; // added Garmin login action request
+NSString * const ACTION_AWARE_GARMIN_LOGIN_REQUEST = @"ACTION_AWARE_GARMIN_LOGIN_REQUEST"; // added Garmin login action request
 
 NSString * const ACTION_AWARE_UPDATE_STUDY_CONFIG = @"ACTION_AWARE_UPDATE_STUDY_CONFIG";
 
