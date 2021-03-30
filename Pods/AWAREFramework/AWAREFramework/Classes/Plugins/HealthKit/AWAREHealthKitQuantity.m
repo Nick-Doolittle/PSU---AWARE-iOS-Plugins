@@ -136,22 +136,27 @@
                                       lastObj[self->KEY_VALUE],
                                       lastObj[self->KEY_UNIT]];
                 [self setLatestValue:message];
+               
                 //added
                 NSString * heart_rate = [NSString stringWithFormat:@"%@",lastObj[self->KEY_VALUE]];
-                int val = [lastObj[self->KEY_VALUE] intValue];
-                //printf("%s\n", [(NSString *)heart_rate UTF8String]);
-                printf("%s\n", [(NSString *)message UTF8String]);
-//                if(val > 100){
-//                       printf("=====>> HIGH\n");
-//                       printf("HEALTHKIT: %s\n", [(NSString *)heart_rate UTF8String]);
-//                }
-//                else{
-//                       printf("=====>> LOW\n");
-//                       printf("HEALTHKIT: %s\n", [(NSString *)heart_rate UTF8String]);
-//                }
+                
+                if([lastObj[self->KEY_DATA_TYPE] isEqualToString:@"HKQuantityTypeIdentifierHeartRateVariabilitySDNN"]){
+                    
+                    int val = [lastObj[self->KEY_VALUE] intValue];
+//                    printf("%s\n", [(NSString *)heart_rate UTF8String]);
+//                    printf("%s\n", [(NSString *)message UTF8String]);
+                    if(val > 100){
+                       printf("HEART RATE VARIABILITY: %s\n", [(NSString *)heart_rate UTF8String]);
+                       printf("=====>> HIGH\n");
+                        
+                    }else{
+                       printf("HEART RATE VARIABILITY: %s\n", [(NSString *)heart_rate UTF8String]);
+                       printf("=====>> LOW\n");
+                    }
+                }
             }
-        });
         
+        });
     }
 }
 

@@ -628,4 +628,17 @@ NSString * const AWARE_PREFERENCES_PLUGIN_HEALTHKIT_PREPERIOD_DAYS = @"preperiod
     [self setLastFetchTimeForAll:nil];
 }
 
+// added returning HRV value to settings card
+- (NSString *) getLatestValue {
+    NSString *messageKeyValueHRV = [[_awareHKHeartRateVariability getLatestValue] componentsSeparatedByString:@"]["][2];
+    NSString *parsedKeyValueHRV = [messageKeyValueHRV substringWithRange:NSMakeRange(6, [messageKeyValueHRV length]-6)];
+    
+    NSString *messageKeyUnitHRV = [[_awareHKHeartRateVariability getLatestValue] componentsSeparatedByString:@"]["][3];
+    NSString *parsedKeyUnitHRV = [messageKeyUnitHRV substringWithRange:NSMakeRange(5, [messageKeyUnitHRV length]-6)];
+    
+    NSString *hrvLatestValue = [NSString stringWithFormat:@"Heart Rate Variability: %@ %@", parsedKeyValueHRV, parsedKeyUnitHRV];
+    
+    return hrvLatestValue;
+}
+
 @end
